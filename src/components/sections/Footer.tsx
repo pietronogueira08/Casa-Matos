@@ -8,12 +8,16 @@ import {
   Mail,
 } from "lucide-react";
 
-const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
+interface CustomIconProps extends React.SVGProps<SVGSVGElement> {
+  size?: number | string;
+}
+
+const Instagram = ({ size = 24, ...props }: CustomIconProps) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -27,12 +31,12 @@ const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const Facebook = (props: React.SVGProps<SVGSVGElement>) => (
+const Facebook = ({ size = 24, ...props }: CustomIconProps) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"

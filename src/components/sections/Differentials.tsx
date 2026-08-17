@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Gem, UserCheck, ShieldCheck } from "lucide-react";
 import { DIFFERENTIALS } from "@/data/mockData";
 
@@ -13,14 +13,14 @@ const iconMap = {
 
 type IconName = keyof typeof iconMap;
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.15 },
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 35 },
   visible: {
     opacity: 1,
