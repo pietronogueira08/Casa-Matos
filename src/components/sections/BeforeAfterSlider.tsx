@@ -4,10 +4,8 @@ import { useRef, useState, useCallback, MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { GripVertical } from "lucide-react";
 
-const BEFORE_IMAGE =
-  "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80";
-const AFTER_IMAGE =
-  "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80";
+const BEFORE_IMAGE = "/luxury_bathroom_before_1786984413582.jpg";
+const AFTER_IMAGE = "/luxury_bathroom_after_1786984385798.jpg";
 
 export default function BeforeAfterSlider() {
   const containerRef = useRef<HTMLDivElement>(null);
