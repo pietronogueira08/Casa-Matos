@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useCallback, MouseEvent } from "react";
+import { useState, useCallback, MouseEvent, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Tag } from "lucide-react";
+import { MapPin, Tag, X, Clock, Layers, CheckCircle } from "lucide-react";
 import {
   PORTFOLIO_FILTERS,
   PORTFOLIO_ITEMS,
@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 
 export default function InteractivePortfolio() {
   const [activeFilter, setActiveFilter] = useState<PortfolioFilter>("all");
+  const [selectedProject, setSelectedProject] = useState<typeof PORTFOLIO_ITEMS[0] | null>(null);
 
   const filtered =
     activeFilter === "all"
@@ -28,6 +29,16 @@ export default function InteractivePortfolio() {
     },
     []
   );
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => { document.body.style.overflow = "unset"; };
+  }, [selectedProject]);
 
   return (
     <section
@@ -105,6 +116,7 @@ export default function InteractivePortfolio() {
                 exit={{ opacity: 0, scale: 0.88 }}
                 transition={{ type: "spring", stiffness: 280, damping: 26, mass: 0.8 }}
                 whileHover={{ y: -6 }}
+                onClick={() => setSelectedProject(item)}
                 className="group relative rounded-2xl overflow-hidden border border-white/[0.08] hover:border-[#EAA023]/40 transition-all duration-300 shadow-2xl cursor-pointer"
                 style={
                   {
@@ -148,7 +160,7 @@ export default function InteractivePortfolio() {
                   <h3 className="text-base font-bold text-[#F8FAFC] mb-2">{item.title}</h3>
                   <div className="flex items-center gap-1.5">
                     <Tag size={11} className="text-[#EAA023] flex-shrink-0" />
-                    <span className="text-xs text-[#EAA023] font-medium">{item.material}</span>
+                    <span className="text-xs text-[#EAA023] font-medium line-clamp-1">{item.material}</span>
                   </div>
                 </div>
               </motion.div>
@@ -156,6 +168,111 @@ export default function InteractivePortfolio() {
           </AnimatePresence>
         </motion.div>
       </div>
+
+      {/* Project Details Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              className="absolute inset-0 bg-[#060912]/80 backdrop-blur-md"
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto custom-scrollbar bg-[#0C1322] border border-white/[0.08] rounded-3xl shadow-2xl z-10 flex flex-col md:flex-row"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md border border-white/10 text-white transition-colors"
+                aria-label="Fechar detalhes do projeto"
+              >
+                <X size={20} />
+              </button>
+
+              {/* Left Column: Image */}
+              <div className="w-full md:w-2/5 h-64 md:h-auto relative">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title} 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0C1322] md:bg-gradient-to-r md:from-transparent md:to-[#0C1322] pointer-events-none" />
+                
+                {/* Badges on image */}
+                <div className="absolute top-6 left-6 flex flex-col gap-2">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0E3B82]/80 backdrop-blur-md border border-[#0E3B82]/50 w-fit">
+                    <MapPin size={12} className="text-[#EAA023]" />
+                    <span className="text-xs font-semibold text-[#F8FAFC] tracking-wide">
+                      {selectedProject.tag}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/50 backdrop-blur-md border border-white/10 w-fit">
+                    <Clock size={12} className="text-[#EAA023]" />
+                    <span className="text-xs font-semibold text-[#F8FAFC] tracking-wide">
+                      {selectedProject.duration}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Details */}
+              <div className="w-full md:w-3/5 p-6 sm:p-8 lg:p-10 flex flex-col">
+                <span className="text-[#EAA023] text-xs font-bold tracking-[0.2em] uppercase mb-3 block">
+                  Detalhes da Obra
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] mb-4 leading-tight">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-[#94A3B8] text-sm sm:text-base leading-relaxed mb-8">
+                  {selectedProject.description}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-auto">
+                  {/* Materials */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-4">
+                      <Layers size={18} className="text-[#3b82f6]" />
+                      <h4 className="text-[#F8FAFC] font-semibold text-sm">Materiais Utilizados</h4>
+                    </div>
+                    <ul className="flex flex-col gap-2.5">
+                      {selectedProject.materialsList?.map((mat, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-[#94A3B8]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#EAA023] mt-1.5 flex-shrink-0" />
+                          <span className="leading-snug">{mat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Features */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-4">
+                      <CheckCircle size={18} className="text-[#3b82f6]" />
+                      <h4 className="text-[#F8FAFC] font-semibold text-sm">Destaques da Obra</h4>
+                    </div>
+                    <ul className="flex flex-col gap-2.5">
+                      {selectedProject.features?.map((feat, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-[#94A3B8]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#3b82f6] mt-1.5 flex-shrink-0" />
+                          <span className="leading-snug">{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

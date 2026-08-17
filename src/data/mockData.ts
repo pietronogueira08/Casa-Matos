@@ -61,6 +61,15 @@ export const PORTFOLIO_ITEMS = [
     material: "Pedra Hijau Premium",
     image:
       "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+    duration: "45 dias",
+    description: "Construção completa de piscina em alvenaria armada, garantindo estrutura livre de fissuras e vazamentos. O projeto inclui iluminação cênica noturna, prainha para descanso e borda infinita com revestimento premium.",
+    materialsList: [
+      "Pedra Hijau Lisa Premium (Origem: Indonésia)",
+      "Argamassa ACIII Branca Específica para Piscinas",
+      "Impermeabilizante Manta Líquida Flexível",
+      "Iluminação LED RGB Subaquática 9W"
+    ],
+    features: ["Estrutura Armada Dupla", "Prainha (Deck Molhado)", "Aquecimento Solar", "Tratamento por Ozônio"]
   },
   {
     id: 2,
@@ -70,6 +79,15 @@ export const PORTFOLIO_ITEMS = [
     material: "Granito Cinza Andorinha",
     image:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    duration: "30 dias",
+    description: "Reforma e integração da área gourmet com a área externa da piscina. Criação de bancada em ilha, instalação de churrasqueira revestida com sistema de exaustão silencioso e forro de gesso com iluminação embutida.",
+    materialsList: [
+      "Granito Cinza Andorinha Padrão Exportação",
+      "Porcelanato Amadeirado 20x120cm (Piso)",
+      "Churrasqueira em Inox 304 com Grelha Argentina",
+      "Revestimento Brick Rústico na Churrasqueira"
+    ],
+    features: ["Bancada Ilha de 3 metros", "Sistema de Som Embutido", "Exaustão Forçada", "Integração Total"]
   },
   {
     id: 3,
@@ -79,6 +97,15 @@ export const PORTFOLIO_ITEMS = [
     material: "Porcelanato Calacatta 120×120",
     image:
       "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80",
+    duration: "20 dias",
+    description: "Reforma total do banheiro master com foco em alto luxo e conforto. Assentamento perfeito com junta de 1mm, nichos esculpidos e sistema de banho com chuveiros duplos de teto.",
+    materialsList: [
+      "Porcelanato Calacatta Gold 120x120cm",
+      "Metais Deca linha Polo Gold",
+      "Ralo Linear Oculto 15x80cm",
+      "Box Elegance com Roldanas Aparentes Douradas"
+    ],
+    features: ["Nicho Esculpido", "Chuveiros Duplos", "Assento com Aquecimento", "Juntas Secas de 1mm"]
   },
   {
     id: 4,
@@ -88,6 +115,15 @@ export const PORTFOLIO_ITEMS = [
     material: "Madeira Cedro & Pedra Natural",
     image:
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80",
+    duration: "25 dias",
+    description: "Construção de sauna a vapor com isolamento térmico impecável. O teto e os bancos foram revestidos em madeira Cedro tratada, combinados com paredes de pedra natural para reter calor e trazer um aspecto rústico-chique.",
+    materialsList: [
+      "Gerador de Vapor 9KW Inox",
+      "Madeira Cedro Cerne (Exportação)",
+      "Luminária Blindada para Sauna",
+      "Porta de Alumínio e Vidro Temperado 8mm"
+    ],
+    features: ["Isolamento Térmico EPS", "Controle Digital de Temperatura", "Saída de Vapor com Porta-Essência", "Bancos em 'L'"]
   },
   {
     id: 5,
@@ -97,6 +133,15 @@ export const PORTFOLIO_ITEMS = [
     material: "Porcelanato Nero Marquina 80×160",
     image:
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+    duration: "35 dias",
+    description: "Revitalização da fachada comercial com aplicação de porcelanatos escuros em grande formato. Utilização de sistema de fixação e argamassa de alta performance para garantir segurança extrema contra intempéries.",
+    materialsList: [
+      "Porcelanato Nero Marquina 80x160cm",
+      "Argamassa ACIII Específica para Fachadas Grandes Formatos",
+      "Sistema de Fixação Mecânica (Inserts Metálicos)",
+      "Rejunte Epóxi Preto Resistente a UV"
+    ],
+    features: ["Instalação com Andaime Suspenso", "Alinhamento a Laser", "Alta Durabilidade Climática", "Estética Imponente"]
   },
   {
     id: 6,
@@ -106,6 +151,15 @@ export const PORTFOLIO_ITEMS = [
     material: "Pedra Madeira Natural",
     image:
       "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+    duration: "18 dias",
+    description: "Aplicação artesanal de Pedra Madeira nas paredes externas da residência, criando uma volumetria rústica e sofisticada. O corte irregular e o encaixe preciso evitam frestas visíveis.",
+    materialsList: [
+      "Pedra Madeira Natural Irregular (Amarela/Goiás)",
+      "Argamassa Cinza para Pedras Rústicas",
+      "Resina Acrílica Impermeabilizante Fosca",
+      "Bordas de Acabamento em Granito"
+    ],
+    features: ["Impermeabilização Anti-Fungo", "Recorte Artesanal Pedra a Pedra", "Luzes Balizadoras", "Livre de Manutenção"]
   },
   {
     id: 7,
@@ -115,6 +169,15 @@ export const PORTFOLIO_ITEMS = [
     material: "Madeira Cumaru & Vidro Temperado",
     image:
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    duration: "12 dias",
+    description: "Fabricação e instalação de porta principal pivotante monumental com 4 metros de altura. Ferragens de alta capacidade de carga e puxador em inox escovado de 1,5m.",
+    materialsList: [
+      "Madeira Cumaru Maciça Seca em Estufa",
+      "Pino Pivotante de Rolamento (Suporta até 300kg)",
+      "Puxador Inox Escovado 150cm",
+      "Fechadura Digital Biométrica Embutida"
+    ],
+    features: ["Abertura Suave", "Fechadura Inteligente", "Isolamento Acústico", "Verniz PU com Filtro Solar"]
   },
   {
     id: 8,
@@ -124,6 +187,15 @@ export const PORTFOLIO_ITEMS = [
     material: "MDF Revestido Laminado 15cm",
     image:
       "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+    duration: "7 dias",
+    description: "Corte na alvenaria e fixação de rodapés nivelados à parede (estilo negativo/embutido), eliminando o acúmulo de poeira e proporcionando um visual minimalista contínuo aos ambientes.",
+    materialsList: [
+      "Rodapé MDF Ultra-Umidade Branco Neve 15cm",
+      "Cola PU de Alta Aderência",
+      "Perfil Metálico (Pingadeira) para Base",
+      "Massa Acrílica para Acabamento"
+    ],
+    features: ["Efeito Flutuante", "Não Acumula Poeira", "Proteção Contra Umidade", "Linhas Minimalistas"]
   },
 ];
 
